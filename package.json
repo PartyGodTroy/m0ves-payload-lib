@@ -2,6 +2,7 @@
   "version": "0.0.1",
   "name": "m0ves-payload-lib",
   "type": "module",
+  "types": "",
   "exports": {
     "./*": {
       "types": "./dist/*.d.ts"
