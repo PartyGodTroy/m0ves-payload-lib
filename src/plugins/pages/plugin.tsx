@@ -1,5 +1,5 @@
 import { revalidateTag } from 'next/cache'
-import {
+import type {
   CollectionAfterChangeHook,
   CollectionAfterDeleteHook,
   CollectionConfig,
@@ -8,9 +8,8 @@ import {
 } from 'payload'
 import { defaultBreakPoints } from '../common/fields/PreviewBreakPoints'
 import { getCommonPageFields } from '../common/fields/PageFields'
-import { Page } from '@/payload-types'
 
-export const revalidatePageCache: CollectionAfterChangeHook<Page> = async ({
+export const revalidatePageCache: CollectionAfterChangeHook<any> = async ({
   doc,
   previousDoc,
   operation,
@@ -39,7 +38,7 @@ export const revalidatePageCache: CollectionAfterChangeHook<Page> = async ({
   }
 }
 
-export const revalidatePageCacheDelete: CollectionAfterDeleteHook<Page> = async ({ doc }) => {
+export const revalidatePageCacheDelete: CollectionAfterDeleteHook<any> = async ({ doc }) => {
   const slug = doc.slug
   if (slug) {
     revalidateTag(getPageCacheKeyBySlug([slug]), 'max')

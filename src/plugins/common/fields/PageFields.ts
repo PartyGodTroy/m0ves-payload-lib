@@ -1,12 +1,10 @@
 import type { Field } from 'payload'
 import { INCLUDE_SEO_FIELD_NAME } from '../../seo/plugin'
-import { INCLUDE_IMPORT_EXPORT_NAME } from '../../importexport/plugin'
 import { INCLUDE_NESTED_DOC_NAME } from '../../nested-doc/plugin'
 import { EXCERPT_FIELD_SEARCH_NAME, INCLUDE_SEARCH_NAME } from '../../search/plugin'
 
 export const getCommonPageFields = ({
   include_seo = false,
-  include_import_export = false,
   include_nested_doc = false,
   include_search = false,
   include_redirects = false,
@@ -22,15 +20,7 @@ export const getCommonPageFields = ({
       hidden: true,
     })
   }
-  if (include_import_export) {
-    fields.push({
-      name: INCLUDE_IMPORT_EXPORT_NAME,
-      label: 'Include SEO',
-      type: 'checkbox',
-      defaultValue: include_import_export,
-      hidden: true,
-    })
-  }
+
 
   if (include_nested_doc) {
     fields.push({
